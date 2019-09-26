@@ -11,7 +11,7 @@ def read_notes():
 	# To constantly read from the stdin and send to the files
     # until the # char occurred.  
     done = False	
-    print('Enter the your notes, (Use # to quit and save from notes)')
+    print('Put your note here, (Use # to quit and save from notes)')
 
     while not done:
         read_line = sys.stdin.readline()
@@ -32,18 +32,17 @@ def write_to_file(mesg):
 
 def main():
 
-	parser = argparse.ArgumentParser(description='Tool for adding insta notes')
-	parser.add_argument('-t',
-                                '--title',
-                                action='store',
-				required='True',
-				help='set title to note.')
+    parser = argparse.ArgumentParser(description='Tool for adding insta notes')
+    parser.add_argument('-t','--title',
+                                      action='store',
+                                      required='True',
+                                      help='Set titles for notes.')
 
-	args = parser.parse_args()
+    args = parser.parse_args()
 
-	if args.title:
-		NOTE_TITLE = args.title
-		read_notes()
+    if args.title:
+	NOTE_TITLE = args.title
+	read_notes()
 		
 		
 if __name__ == '__main__':
