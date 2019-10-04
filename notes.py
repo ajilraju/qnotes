@@ -4,10 +4,6 @@ import argparse
 import sys
 import time
 
-def err_exit(msg):
-    sys.stderr.write(msg + '\n')
-    sys.exit()
-
 def read_notes():
 	# To constantly read from the stdin and send to the files
     # until the # char occurred.  
@@ -26,12 +22,13 @@ def read_notes():
 	                
 def write_to_file(notes, title):
 	# To open and write the actual notes data to files 
-    filename = './notesfiles.txt'
+    filename = './taskfile.json'
     
     try:
-        file = open(filename, 'w+')
-        file.write(str({str(time.time()) : notes}) + '\n')
-    except IOError:
+        file = open(filename, 'a')
+        file.write(str({'time': time.time(), 'title': title, 'note': str(notes)}))
+        file.write("\n")
+    except IOErro:
         print("Can't write to file")
         sys.exit(1)
 
