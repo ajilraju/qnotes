@@ -2,6 +2,7 @@
 
 
 import argparse
+import json
 import sys
 import time
 
@@ -26,10 +27,9 @@ def write_to_file(notes, title):
     filename = './taskfile.json'
     
     try:
-        file = open(filename, 'a')
-        file.write(str({'time': time.time(), 'title': title, 'todo': str(notes)}))
-        file.write("\n")
-    except IOErro:
+        with open('taskfile.json', 'w') as fp:
+            json.dump(str([{'time': time.time(), 'title': title, 'todo': str(notes)}]), fp)
+    except IOError:
         print("Can't write to file")
         sys.exit(1)
 
@@ -50,7 +50,7 @@ def main():
     
     if args.list:
         # Here is showing the stored todo's
-		sys.exit(0)
+        sys.exit(0)
         
     # reading todo from the stdin and once the todo is grabed 
     # the content is write to the file
