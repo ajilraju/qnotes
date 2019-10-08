@@ -50,7 +50,7 @@ def main():
     
     if args.list:
         # Here is showing the stored todo's
-		sys.exit(0)
+	sys.exit(0)
         
     # reading todo from the stdin and once the todo is grabed 
     # the content is write to the file
